@@ -76,6 +76,7 @@
 			this.waitTime = Math.ceil(Math.random() * 60); },
 
 		updateAnimation: function() { //!!
+			if (gameTimer.time < 30){
 			this.sourceX = Math.floor(this.currentFrame % this.COLUMNS) * this.SIZE;
 			this.sourceY = Math.floor(this.currentFrame / this.COLUMNS) * this.SIZE;
 
@@ -121,6 +122,7 @@
 					}
 				break;
 			}
+		}
 		}
 	};
 
@@ -212,11 +214,11 @@
 		for(var i = 0; i < starCanvases.length; i++)
 				if(starCanvases[i] === theCanvasThatWasClicked)
 					{
-						var star = starObjects[i]
+						var star = starObjects[i];
 						if(star.state === star.JUMPING)
 							{
 								star.state = star.HIT;
-								star++;
+								starsHit++;
 							}
 					}
 	}
