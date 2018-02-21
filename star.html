@@ -54,6 +54,15 @@
 </body>
 
 <script> //62
+var play = false;
+var count = 0;
+button.addEventListener("click", start, false);
+function start(){
+	if (play == true)
+	play = false;
+	else play = true;
+	count++;
+}
 	var star =
 	{
 		IMAGE: "TileSheet.png",
@@ -76,7 +85,7 @@
 			this.waitTime = Math.ceil(Math.random() * 60); },
 
 		updateAnimation: function() { //!!
-			if (gameTimer.time < 30){
+			if (play){
 			this.sourceX = Math.floor(this.currentFrame % this.COLUMNS) * this.SIZE;
 			this.sourceY = Math.floor(this.currentFrame / this.COLUMNS) * this.SIZE;
 
@@ -141,16 +150,20 @@
 	var starsHit = 0;
 	var output = document.querySelector("#output");
 
-	var gameTimer =
+	var gameTimer = 
 	{
 		time: 0,
 		interval: undefined,
 		start: function() {
+			
 			var self = this;
+			if (count < 1)
 			this.interval = setInterval(function(){self.tick();}, 1000); },
 		tick: function() {
+			if (play)
 			this.time--; },
 		stop: function() {
+			if (play)
 			clearInterval(this.interval); },
 		reset: function() {
 			this.time = 0; }
