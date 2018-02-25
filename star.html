@@ -35,7 +35,6 @@
 	}
 
 	#button {
-		background-image: url(images/cow.png);
 		position: absolute;
 		margin-left: -360px;  
 		margin-top: 15px;
@@ -54,14 +53,15 @@
 </body>
 
 <script> //62
-var play = false;
-var count = 0;
-button.addEventListener("click", start, false);
-function start(){
-	if (play == true)
-	play = false;
-	else play = true;
-	count++;
+	var play = false;
+	var count = 0;
+	button.addEventListener("click", start, false);
+	
+	function start(){
+		if (play == true)
+			play = false;
+		else play = true;
+		count++;
 }
 	var star =
 	{
@@ -142,6 +142,7 @@ function start(){
 	var COLUMNS = 3;
 	var SIZE = star.SIZE; 
 	var SPACE = 8;
+	var t = 0;
 
 	var starObjects = [];
 	var starCanvases = [];
@@ -191,7 +192,7 @@ function start(){
 					stage.appendChild(canvas);
 					canvas.style.top = row * (SIZE + SPACE) + "px";
 					canvas.style.left = column * (SIZE + SPACE) + "px";
-					canvas.addEventListener("mousedown", mousedownHandler, false);
+					window.addEventListener("keydown", keydownHandler, false);
 					starCanvases.push(canvas);
 					var drawingSurface = canvas.getContext("2d");
 					starDrawingSurfaces.push(drawingSurface);
@@ -202,7 +203,7 @@ function start(){
 	function updateAnimation()
 	{
 		if(gameTimer.time > 0)
-				setTimeout(updateAnimation, 100); //уровни сложности? 
+				setTimeout(updateAnimation, 100); 
 		for(var i = 0; i < starObjects.length; i++)
 					starObjects[i].updateAnimation();
 		if(gameTimer.time === 0)
@@ -215,25 +216,62 @@ function start(){
 		for(var i = 0; i < starCanvases.length; i++)
 			{
 				var canvas = starCanvases[i];
-				canvas.removeEventListener("mousedown", mousedownHandler, false);
-				//star.state = star.HIDING;
+				window.removeEventListener("keydown", keydownHandler, false);
 			}
 
 	}
 
-	function mousedownHandler(event)
+	function keydownHandler(event)
 	{
 		var theCanvasThatWasClicked = event.target;
-		for(var i = 0; i < starCanvases.length; i++)
-				if(starCanvases[i] === theCanvasThatWasClicked)
-					{
-						var star = starObjects[i];
-						if(star.state === star.JUMPING)
-							{
-								star.state = star.HIT;
-								starsHit++;
-							}
+		for (var i = 0; i < starCanvases.length; i++)
+		{
+			var star = starObjects[i] 
+			if (event.keyCode == 81 && star.state === star.JUMPING && i == 0) {
+					 star.state = star.HIT;         
+					 starsHit++; 
 					}
+
+			if (event.keyCode == 87 && star.state === star.JUMPING && i == 1) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 69 && star.state === star.JUMPING && i == 2) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 65 && star.state === star.JUMPING && i == 3) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 83 && star.state === star.JUMPING && i == 4) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 68 && star.state === star.JUMPING && i == 5) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 90 && star.state === star.JUMPING && i == 6) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 88 && star.state === star.JUMPING && i == 7) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+
+			if (event.keyCode == 67 && star.state === star.JUMPING && i == 8) {
+					 star.state = star.HIT;         
+					 starsHit++; 
+					}
+			}
 	}
 
 	function render()
@@ -245,6 +283,7 @@ function start(){
 			drawingSurface.clearRect(0, 0, SIZE, SIZE);
 			drawingSurface.drawImage(image, star.sourceX, star.sourceY, SIZE, SIZE, 0, 0, SIZE, SIZE);
 		}
+		console.log(t);
 		output.innerHTML = "Звёзд сбито: " + starsHit + " Время: " + gameTimer.time;
 	}
 </script>
