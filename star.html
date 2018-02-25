@@ -142,7 +142,6 @@
 	var COLUMNS = 3;
 	var SIZE = star.SIZE; 
 	var SPACE = 8;
-	var t = 0;
 
 	var starObjects = [];
 	var starCanvases = [];
@@ -283,7 +282,6 @@
 			drawingSurface.clearRect(0, 0, SIZE, SIZE);
 			drawingSurface.drawImage(image, star.sourceX, star.sourceY, SIZE, SIZE, 0, 0, SIZE, SIZE);
 		}
-		console.log(t);
 		output.innerHTML = "Звёзд сбито: " + starsHit + " Время: " + gameTimer.time;
 	}
 </script>
