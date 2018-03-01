@@ -64,16 +64,30 @@ var star =
 				} // sw
 			} // if
 		}, // f
-		//clean: function() { 
-		//	if (this.state != this.HIDING)
-		//		this.state = this.HIDING;},
+		/*clean: function() { 
+			
+				SIZE = 64;
+		COLUMNS = 3;
+		currentFrame = 0; //first
+		numberOfFrames = 5; //last  
+		sourceX = 0;
+		sourceY = 0;
+		HIDING = 0;
+		JUMPING = 1;
+		HIT = 2;
+		state = this.HIDING;
+		forward = true;
+		waitTime = undefined;
+		timeToReset = 3;
+		resetCounter = 0;
+		},*/
 	};
 
 	var play = false;
 	var end = false;
 	var count = 0;
 	var t = 0;
-
+var k = 0;
 	var image = new Image();
 	image.src = "images/" + star.IMAGE;
 
@@ -97,7 +111,7 @@ var star =
 	var starsHit = 0;
 	var output = document.querySelector("#output");
 	var name = document.querySelector("#name");
-
+    
 	var gameTimer = 
 	{
 		time: 0,
@@ -145,7 +159,7 @@ var star =
 		if (!play && count >= 1) {
 			count = 0;
 			starsHit = 0;
-			gameTimer.time = 30;
+			gameTimer.time = 2;
 			updateAnimation();
 
 			//starObjects[i].clean();
@@ -159,7 +173,7 @@ var star =
 	function loadHandler()
 	{
 		buildMap();
-		gameTimer.time = 30;
+		gameTimer.time = 2;
 		updateAnimation();
 	}
 
@@ -199,9 +213,9 @@ var star =
 
 		if(gameTimer.time === 0)
 		{
-			//for(var i = 0; i < starObjects.length; i++) {
-			//	starObjects[i].clean();
-
+			//for(var j = 0; j < starObjects.length; j++) {
+			//	starObjects[j].clean();
+			
 			//}
 			endGame();
 		}
@@ -290,10 +304,9 @@ var star =
 
 	function precords()
 	{
-		for (var i = 0; i < t; i++) {
-			document.getElementById("name").innerHTML= " Звёзд сбито: " + records;
-			document.getElementById("number").innerHTML= i + 1 +".";
-		}
+		
+			document.getElementById("name").innerHTML += (k + 1) + " Звёзд сбито: " + records +"." + "<br>";
+		k++;
 	}
 
 	function render()
