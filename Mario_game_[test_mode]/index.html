@@ -1,0 +1,85 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<title>Перемещение спрайта с помощью клавиатуры</title>
+<p id="output"></p>
+<p id="outputcoin"></p>
+<input type="image" src="start.png" id="button" onclick="Start()">
+<input type="image" src="tutorial.png" id="tutori" onclick="tutorial()">
+<input type="image" src="tutor.png" id="tut">
+<input type="image" src="magnet.png" id="magnet">
+<input type="image" src="coin.png" id="coin">
+
+<canvas width="800" height="400" style="border: 1px dashed black">
+</canvas>
+<script src="script.js"></script>
+
+<style>
+@font-face { 
+font-family: emulogic; 
+src: url("10967.otf");
+
+} 
+#output { 
+font-family: emulogic;
+position: absolute;
+color: #fff;
+font-size: 24pt;
+margin-left: 110px;
+margin-top: 1px;
+}
+#outputcoin{
+    
+    font-family: emulogic;
+position: absolute;
+color: #fff;
+font-size: 18pt;
+margin-left: 580px;
+margin-top: 13.1px;
+}
+#button {
+   float: left;
+    margin-left: 670px;
+    top: 20px;
+    width: 100px;
+height: 30px;
+    position: absolute;
+    
+}
+#tutori {
+
+    margin-left: 626px;
+    top: 20px;
+    width: 25px;
+height: 30px;
+    position: absolute;
+    
+}
+#tut {
+display: none;
+    margin-left: 50px;
+    top: 80px;
+    width: 700px;
+height: 300px;
+    position: absolute;
+    
+}
+#magnet {
+
+    margin-left: 465px;
+    top: 20px;
+    width: 30px;
+height: 30px;
+    position: absolute;
+}
+#coin {
+
+    margin-left: 515px;
+    top: 16px;
+    width:60px;
+height: 40px;
+    position: absolute;
+}
+</style>
+
+
